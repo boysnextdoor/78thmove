@@ -2,10 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script>
-  (function(){(function(){function e(a){this.t={};this.tick=function(a,c,b){this.t[a]=[void 0!=b?b:(new Date).getTime(),c];if(void 0==b)try{window.console.timeStamp("CSI/"+a)}catch(h){}};this.tick("start",null,a)}var a;window.performance&&(a=window.performance.timing);var f=a?new e(a.responseStart):new e;window.mobilespeed_jstiming={Timer:e,load:f};if(a){var c=a.navigationStart,d=a.responseStart;0<c&&d>=c&&(window.mobilespeed_jstiming.srt=d-c)}if(a){var b=window.mobilespeed_jstiming.load;0<c&&d>=c&&(b.tick("_wtsrt",
-void 0,c),b.tick("wtsrt_","_wtsrt",d),b.tick("tbsd_","wtsrt_"))}try{a=null,window.chrome&&window.chrome.csi&&(a=Math.floor(window.chrome.csi().pageT),b&&0<c&&(b.tick("_tbnd",void 0,window.chrome.csi().startE),b.tick("tbnd_","_tbnd",c))),null==a&&window.gtbExternal&&(a=window.gtbExternal.pageT()),null==a&&window.external&&(a=window.external.pageT,b&&0<c&&(b.tick("_tbnd",void 0,window.external.startE),b.tick("tbnd_","_tbnd",c))),a&&(window.mobilespeed_jstiming.pt=a)}catch(g){}})();})();
-  </script>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -21,7 +17,7 @@ void 0,c),b.tick("wtsrt_","_wtsrt",d),b.tick("tbsd_","wtsrt_"))}try{a=null,windo
     display: none;
   }
 
-  #title {
+  #background {
     background-image: url(https://images.unsplash.com/photo-1468070454955-c5b6932bd08d?dpr=1&auto=format&crop=entropy&fit=crop&w=1534&h=1022&q=50&cs=tinysrgb);
     background-size: cover;
     background-attachment: fixed;
@@ -47,6 +43,9 @@ void 0,c),b.tick("wtsrt_","_wtsrt",d),b.tick("tbsd_","wtsrt_"))}try{a=null,windo
   .masthead h2 {
     font-size: 1.7em;
     font-weight: normal;
+  }
+  .masthead .two.buttons {
+    width: 67%
   }
 
   .ui.vertical.stripe {
@@ -129,6 +128,12 @@ void 0,c),b.tick("wtsrt_","_wtsrt",d),b.tick("tbsd_","wtsrt_"))}try{a=null,windo
         .sidebar('attach events', '.toc.item')
       ;
 
+      $('#showcases .image')
+        .dimmer({
+          on: 'hover'
+        })
+      ;
+
     })
   ;
   </script>
@@ -149,7 +154,7 @@ void 0,c),b.tick("wtsrt_","_wtsrt",d),b.tick("tbsd_","wtsrt_"))}try{a=null,windo
 </div>
 
 <div class="pusher">
-  <div class="ui inverted vertical masthead center aligned segment" id="title">
+  <div class="ui inverted vertical masthead center aligned segment" id="background">
 
     <div class="ui container">
       <div class="ui large secondary inverted pointing menu">
@@ -189,22 +194,57 @@ void 0,c),b.tick("wtsrt_","_wtsrt",d),b.tick("tbsd_","wtsrt_"))}try{a=null,windo
     </div>
   </div>
 
-  <div class="ui vertical stripe segment">
+  <div class="ui vertical stripe segment" id="showcases">
     <div class="ui middle aligned stackable grid container">
       <div class="center aligned row">
         <div class="eight wide column">
-          <img src="white-image.png" class="ui huge bordered rounded image">
+          <div class="blurring dimmable image">
+            <img src="white-image.png" class="ui fluid bordered rounded image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted large button">더 보기</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="eight wide column">
-          <img src="white-image.png" class="ui huge bordered rounded image">
+          <div class="blurring dimmable image">
+            <img src="white-image.png" class="ui fluid bordered rounded image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted large button">더 보기</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="center aligned row">
         <div class="eight wide column">
-          <img src="white-image.png" class="ui huge bordered rounded image">
-        </div>
-        <div class="eight wide column">
-          <img src="white-image.png" class="ui huge bordered rounded image">
+          <div class="blurring dimmable image">
+            <img src="white-image.png" class="ui fluid bordered rounded image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted large button">더 보기</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><div class="eight wide column">
+          <div class="blurring dimmable image">
+            <img src="white-image.png" class="ui fluid bordered rounded image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted large button">더 보기</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -235,24 +275,10 @@ void 0,c),b.tick("wtsrt_","_wtsrt",d),b.tick("tbsd_","wtsrt_"))}try{a=null,windo
         </div>
         <div class="seven wide column">
           <h4 class="ui inverted header">Copyright</h4>
-          <p>Copyright © 2015. Boys Next Door. All rights reserved.</p>
+          <p>Copyright © 2016. Boys Next Door. All rights reserved.</p>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<script>
-(function(){var d="webkitvisibilitychange",g="_ns";if(window.mobilespeed_jstiming){window.mobilespeed_jstiming.a={};window.mobilespeed_jstiming.b=1;var n=function(b,a,e){var c=b.t[a],f=b.t.start;if(c&&(f||e))return c=b.t[a][0],void 0!=e?f=e:f=f[0],Math.round(c-f)},p=function(b,a,e){var c="";window.mobilespeed_jstiming.srt&&(c+="&srt="+window.mobilespeed_jstiming.srt,delete window.mobilespeed_jstiming.srt);window.mobilespeed_jstiming.pt&&(c+="&tbsrt="+window.mobilespeed_jstiming.pt,delete window.mobilespeed_jstiming.pt);try{window.external&&window.external.tran?
-c+="&tran="+window.external.tran:window.gtbExternal&&window.gtbExternal.tran?c+="&tran="+window.gtbExternal.tran():window.chrome&&window.chrome.csi&&(c+="&tran="+window.chrome.csi().tran)}catch(v){}var f=window.chrome;if(f&&(f=f.loadTimes)){f().wasFetchedViaSpdy&&(c+="&p=s");if(f().wasNpnNegotiated){var c=c+"&npn=1",h=f().npnNegotiatedProtocol;h&&(c+="&npnv="+(encodeURIComponent||escape)(h))}f().wasAlternateProtocolAvailable&&(c+="&apa=1")}var l=b.t,t=l.start,f=[],h=[],k;for(k in l)if("start"!=k&&
-0!=k.indexOf("_")){var m=l[k][1];m?l[m]&&h.push(k+"."+n(b,k,l[m][0])):t&&f.push(k+"."+n(b,k))}delete l.start;if(a)for(var q in a)c+="&"+q+"="+a[q];(a=e)||(a="https:"==document.location.protocol?"https://csi.gstatic.com/csi":"http://csi.gstatic.com/csi");return[a,"?v=3","&s="+(window.mobilespeed_jstiming.sn||"mobilespeed")+"&action=",b.name,h.length?"&it="+h.join(","):"",c,"&rt=",f.join(",")].join("")},r=function(b,a,e){b=p(b,a,e);if(!b)return"";a=new Image;var c=window.mobilespeed_jstiming.b++;window.mobilespeed_jstiming.a[c]=
-a;a.onload=a.onerror=function(){window.mobilespeed_jstiming&&delete window.mobilespeed_jstiming.a[c]};a.src=b;a=null;return b};window.mobilespeed_jstiming.report=function(b,a,e){if("prerender"==document.webkitVisibilityState){var c=!1,f=function(){if(!c){a?a.prerender="1":a={prerender:"1"};var h;"prerender"==document.webkitVisibilityState?h=!1:(r(b,a,e),h=!0);h&&(c=!0,document.removeEventListener(d,f,!1))}};document.addEventListener(d,f,!1);return""}return r(b,a,e)};var u=function(b,a,e,c){return 0<
-e?(c?b.tick(a,c,e):b.tick(a,"",e),!0):!1};window.mobilespeed_jstiming.getNavTiming=function(b){if(window.performance&&window.performance.timing){var a=window.performance.timing;u(b,"_dns",a.domainLookupStart)&&u(b,"dns_",a.domainLookupEnd,"_dns");u(b,"_con",a.connectStart)&&u(b,"con_",a.connectEnd,"_con");u(b,"_req",a.requestStart)&&u(b,"req_",a.responseStart,"_req");u(b,"_rcv",a.responseStart)&&u(b,"rcv_",a.responseEnd,"_rcv");if(u(b,g,a.navigationStart)){u(b,"ntsrt_",a.responseStart,g);u(b,"nsfs_",
-a.fetchStart,g);u(b,"nsrs_",a.redirectStart,g);u(b,"nsre_",a.redirectEnd,g);u(b,"nsds_",a.domainLookupStart,g);u(b,"nscs_",a.connectStart,g);u(b,"nsrqs_",a.requestStart,g);var e=!1;try{e=window.external&&window.external.startE}catch(c){}!e&&window.chrome&&window.chrome.csi&&(e=Math.floor(window.chrome.csi().startE));e&&(u(b,"_se",e),u(b,"sens_",a.navigationStart,"_se"));u(b,"ntplt0_",a.loadEventStart,g);u(b,"ntplt1_",a.loadEventEnd,g);window.chrome&&window.chrome.loadTimes&&(a=window.chrome.loadTimes().firstPaintTime)&&
-u(b,"nsfp_",1E3*a,g)}}}};})();
-</script>
-<script>
-(function(){var a=window.mobilespeed_jstiming,b=a.load;window.top==window&&window.addEventListener("load",function(){b.name="load";b.tick("ol");a.getNavTiming(b);setTimeout(function(){a.report(b,{e:"push_from_html_client_bdp_30k"})},300)},!1);})();
-</script>
-</body>
+  </body>
 </html>
