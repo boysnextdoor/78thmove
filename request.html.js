@@ -68,16 +68,16 @@
         serialized[key] = existing !== undefined && value ? [value].concat(existing) : value
       }
 
-      saveData(serialized)
-
-      location.href = 'success.html'
+      saveData(serialized, function () {
+        location.href = 'success.html'
+      })
 
       return false
     })
   })
 
-  function saveData (data) {
+  function saveData (data, callback) {
     var key = firebase.database().ref().child('requests').push().key
-    firebase.database().ref('/requests/' + key).set(data)
+    firebase.database().ref('/requests/' + key).set(data).then(callback)
   }
 })(jQuery);
