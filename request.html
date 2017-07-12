@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="내 손 안의 외주 제작 서비스">
+  <meta name="theme-color" content="#242B2A">
+  <meta name="google-site-verification" content="i7d5frOSED-kIk6OXT02sHytAnJ7Rju18lUJDPM-F_4" />
+
+  <title>신의한수</title>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+
+  <script src="common.js"></script>
+  <link rel="stylesheet" href="common.css">
+
+  <script>(function(i,s,o,g,r,a,m){i.GoogleAnalyticsObject=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-78757178-2','auto');ga('send','pageview')</script>
+  
+  <script src="datepicker.min.js"></script>
+  <script src="datepicker.ko-kr.js"></script>
+  <link rel="stylesheet" href="datepicker.min.css">
+
+  <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+  <script>
+    ;(function () {
+      firebase.initializeApp({
+        apiKey: 'AIzaSyB-JLyozVF2qD90peqefC-ABxRKxtHQj_c',
+        authDomain: 'thmove-2f518.firebaseapp.com',
+        databaseURL: 'https://thmove-2f518.firebaseio.com/',
+        storageBucket: 'thmove-2f518.appspot.com'
+      })
+    })();
+  </script>
+
+  <script src="request.html.js"></script>
+</head>
+<body>
+<div class="ui large top fixed hidden menu">
+  <div class="ui container">
+    <a class="item" href="index.html">Home</a>
+    <a class="item" href="portfolio.html">Portfolio</a>
+    <a class="active item" href="request.html">Request</a>
+  </div>
+</div>
+
+<div class="ui vertical inverted sidebar menu">
+  <a class="item" href="index.html">Home</a>
+  <a class="item" href="portfolio.html">Portfolio</a>
+  <a class="active item" href="request.html">Request</a>
+</div>
+
+<div class="pusher">
+  <div class="ui inverted vertical center aligned segment">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        <a class="item" href="index.html">Home</a>
+        <a class="item" href="portfolio.html">Portfolio</a>
+        <a class="active item" href="request.html">Request</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ui vertical stripe segment">
+    <div class="ui text container">
+      <form class="ui form">
+        <div class="required field">
+          <label>프로젝트 명</label>
+          <input type="text" name="title" placeholder="프로젝트 이름을 입력해 주세요.">
+        </div>
+        <div class="field">
+          <label>예상 시작일</label>
+          <input type="date" name="expectedStartDate" placeholder="연도-월-일 형식입니다. 확실하지 않을 경우 비워 주세요." class="datepicker">
+        </div>
+        <div class="field">
+          <label>예상 마감일</label>
+          <input type="date" name="expectedEndDate" placeholder="연도-월-일 형식입니다. 확실하지 않을 경우 비워 주세요." class="datepicker">
+        </div>
+        <div class="field">
+          <label>예상 소요 기간</label>
+          <input type="text" name="expectedPeriod" placeholder="2주, 3개월 등">
+        </div>
+        <div class="fields">
+          <div class="three wide field">
+            <label>예상 소요 비용</label>
+            <input type="number" name="expectedCost" value="0">
+          </div>
+          <div class="field">
+            <label>　</label>
+            <input value="만원" style="border: none;" readonly>
+          </div>
+        </div>
+        <div class="field">
+          <label>프로젝트 분류</label>
+        </div>
+        <div class="equal width fields">
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" name="category" value="mobileApplication" class="hidden">
+              <label>모바일 애플리케이션</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" name="category" value="webService" class="hidden">
+              <label>웹 서비스</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden etc" value="etc" data-field="category">
+              <label>기타</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <input type="text" class="etc" name="category" placeholder="기타 앱 분류를 입력해 주세요." data-field="category">
+        </div>
+        <div class="field">
+          <label>프로젝트 진행 상황</label>
+          <div class="ui selection dropdown">
+            <input type="hidden" name="status" data-field="status">
+            <i class="dropdown icon"></i>
+            <div class="default text">프로젝트 진행 상황</div>
+            <div class="menu">
+              <div class="item" data-value="basicIdea">기초 구상</div>
+              <div class="item" data-value="detailedPlan">상세 기획</div>
+              <div class="item" data-value="inService">운영 중</div>
+              <div class="item" data-value="etc">기타</div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <input type="text" class="etc" name="status" placeholder="기타 진행 상황을 입력해 주세요." data-field="status">
+        </div>
+        <div class="required field">
+          <label>프로젝트 진행 방식</label>
+          <textarea type="text" name="communication" placeholder="미팅 일정과 소통 방식 등을 포함합니다." rows="2"></textarea>
+        </div>
+        <div class="required field">
+          <label>프로젝트 상세 내용</label>
+          <textarea type="text" name="details" placeholder="프로젝트에 대해 상세한 기획 내용을 알려 주세요." rows="5"></textarea>
+        </div>
+        <div class="field">
+          <label>기술적 요구 사항</label>
+          <textarea type="text" name="technicalRequirements" placeholder="현재 보유한 장비, 특정 기술 사용 여부 등을 의미합니다." rows="3"></textarea>
+        </div>
+        <div class="required field">
+          <label>기능적 요구 사항</label>
+          <textarea type="text" name="functionalRequirements" placeholder="필수적으로 구현해야 하는 기능 등을 입력해 주세요." rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label>디자인 요구 사항</label>
+          <textarea type="text" name="visualRequirements" placeholder="특정 테마, 주요 색상 등이 있다면 입력해 주세요." rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label>기타 사항</label>
+          <textarea type="text" name="more" placeholder="프로젝트에 대해 기타 참고할 사항을 입력해 주세요." rows="5"></textarea>
+        </div>
+        <div class="required field">
+          <label>연락처</label>
+          <input type="text" name="contact" placeholder="이메일이나 전화번호, 카카오톡 아이디 등 연락처를 입력해 주세요.">
+        </div>
+        <button class="ui right floated button" type="submit">의뢰</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal hfour stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">About</h4>
+          <div class="ui inverted link list">
+            <a href="index.html" class="item">신의한수</a>
+            <a href="portfolio.html" class="item">포트폴리오</a>
+            <a href="#" class="item">옆방젊은이</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Services</h4>
+          <div class="ui inverted link list">
+            <a href="request.html" class="item">외주 의뢰</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Copyright</h4>
+          <p>Copyright © 2016<script>document.write('-' + new Date().getFullYear())</script>. Boys Next Door. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

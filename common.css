@@ -100,3 +100,12 @@
     padding: 1.2em 0em;
   }
 }
+
+.ui.form .field {
+  margin-bottom: 1.5em;
+}
+
+input.etc[type=text] {
+  visibility: hidden;
+  position: absolute;
+}
