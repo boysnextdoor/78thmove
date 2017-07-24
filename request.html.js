@@ -23,8 +23,8 @@
     var dd = twoDigit(d.getDate())
     var val = yyyy + '-' + mm + '-' + dd
 
-    $('input[name=expectedStartDate]').val(val)
-    $('input[name=expectedEndDate]').val(val)
+    $('input[name="예상 시작일"]').val(val)
+    $('input[name="예상 마감일"]').val(val)
 
     var selector = 'input.etc[type=checkbox], .dropdown > input[type=hidden]:first'
     $(selector).change(function (e) {
