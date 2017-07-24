@@ -56,6 +56,8 @@
       })
 
       if (!ok) return false
+      
+      $('.dimmer').toggleClass('active')
 
       var serialized = {
         _createdAt: new Date().valueOf()
