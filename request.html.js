@@ -57,7 +57,9 @@
 
       if (!ok) return false
 
-      var serialized = {}
+      var serialized = {
+        _createdAt: new Date().valueOf()
+      }
       var arr = $('form').serializeArray()
       for (var i = 0; i < arr.length; ++i) {
         var pair = arr[i]
@@ -68,7 +70,7 @@
         serialized[key] = existing !== undefined && value ? [value].concat(existing) : value
       }
 
-      saveData(serialized, function () {
+      saveData(serialized).then(function () {
         location.href = 'success.html'
       })
 
@@ -78,6 +80,20 @@
 
   function saveData (data, callback) {
     var key = firebase.database().ref().child('requests').push().key
-    firebase.database().ref('/requests/' + key).set(data).then(callback)
+    var filePromise = saveFile(data, key)
+    var dataPromise = firebase.database().ref('/requests/' + key).set(data)
+    return Promise.all([filePromise, dataPromise])
+  }
+
+  function saveFile (data, key) {
+    var file = $('#file')[0].files[0]
+
+    if (!file) return
+
+    var path = key + '/' + file.name
+    var storage = firebase.storage().ref()
+    var imageRef = storage.child(path)
+    data['_file'] = path
+    return imageRef.put(file)
   }
 })(jQuery);

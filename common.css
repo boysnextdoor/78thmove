@@ -109,3 +109,8 @@ input.etc[type=text] {
   visibility: hidden;
   position: absolute;
 }
+
+a.disabled {
+  color: grey;
+  cursor: default;
+}
