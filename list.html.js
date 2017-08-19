@@ -45,9 +45,15 @@
       $row.find('td.val').text(item[key])
     }
 
-    var fileRef = firebase.storage().ref().child(item._file)
-    fileRef.getDownloadURL().then(function (url) {
-      $('div#' + index + ' > a').attr('href', url).toggleClass('disabled')
-    })
+    var file = item._file
+    if (!file) return
+    var fileRef = firebase.storage().ref().child(file)
+    fileRef.getDownloadURL()
+      .then(function (url) {
+        $('div#' + index + ' > a').attr('href', url).toggleClass('disabled')
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 })(jQuery);
