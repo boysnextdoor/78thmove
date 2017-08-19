@@ -124,3 +124,7 @@ a.disabled {
   padding: 0 !important;
   margin: 0 !important;
 }
+
+td.key {
+  min-width: 10rem;
+}
