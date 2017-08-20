@@ -2,7 +2,8 @@
   $(document).ready(function () {
     var ref = firebase.database()
       .ref('/requests/')
-      .orderByChild('_createdAt')
+      .orderByChild('_public')
+      .equalTo('1')
       .limitToLast(20)
     
     ref.on('value', function (snapshot) {
