@@ -80,22 +80,24 @@
     })
   })
 
-  function saveData (data, callback) {
+  function saveData (data) {
     var key = firebase.database().ref().child('requests').push().key
-    var filePromise = saveFile(data, key)
-    var dataPromise = firebase.database().ref('/requests/' + key).set(data)
-    return Promise.all([filePromise, dataPromise])
+    var saveTheFile = saveFile(data, key)    
+    var saveTheData = firebase.database().ref('/requests/' + key).set(data)
+    return Promise.all([saveTheFile, saveTheData])
   }
 
   function saveFile (data, key) {
     var file = $('#file')[0].files[0]
 
-    if (!file) return
+    if (!file) {
+      return new Promise(function (resolve, reject) {
+        resolve()
+      })
+    }
 
     var path = key + '/' + file.name
-    var storage = firebase.storage().ref()
-    var imageRef = storage.child(path)
     data['_file'] = path
-    return imageRef.put(file)
+    return firebase.storage().ref().child(path).put(file)
   }
 })(jQuery);
