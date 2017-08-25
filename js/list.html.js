@@ -25,7 +25,7 @@
 
     if (index >= itemCount) {
       var header = '<h3 class="ui header">' + title + '</h3>'
-      var link = '<a class="disabled" href="">파일 보기</a>'
+      var link = '<a href="#">파일 보기</a>'
       var table = '<table class="ui definition table"></table>'
       var $div = $('<div id="' + index + '" class="eight wide column item">' + header + link + table + '</div>')
       $list.append($div)
@@ -46,11 +46,14 @@
     }
 
     var file = item._file
-    if (!file) return
+    if (!file) {
+      $('div#' + index + ' > a').hide()
+      return
+    }
     var fileRef = firebase.storage().ref().child(file)
     fileRef.getDownloadURL()
       .then(function (url) {
-        $('div#' + index + ' > a').attr('href', url).toggleClass('disabled')
+        $('div#' + index + ' > a').attr('href', url)
       })
       .catch(function (error) {
         console.log(error)

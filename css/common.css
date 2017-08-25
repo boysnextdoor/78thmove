@@ -110,11 +110,6 @@ input.etc[type=text] {
   position: absolute;
 }
 
-a.disabled {
-  color: grey;
-  cursor: default;
-}
-
 .active.fullscreen {
   position: fixed !important;
   top: 0 !important;
