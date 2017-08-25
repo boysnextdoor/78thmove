@@ -1,22 +1,21 @@
 ;(function ($) {
   $(document).ready(function () {
-    var ref = firebase.database()
-      .ref('/requests/')
-      .orderByChild('_public')
-      .equalTo('1')
-      .limitToLast(20)
-    
-    ref.on('value', function (snapshot) {
-      $('.dimmer').addClass('active')
+    $('.dimmer').addClass('active')
+    renderAll()
+    setInterval(renderAll, 30 * 1000)
+  })
 
-      var index = 0
-      snapshot.forEach(function (child) {
-        render(index++, child.val())
-      })
-      
+  function renderAll () {
+    $.ajax('https://us-central1-thmove-2f518.cloudfunctions.net/get').then(function (list) {
+      for (var i = 0; i < list.length; ++i) {
+        var child = list[i]
+        render(i, child)
+      }
+      $('.dimmer').removeClass('active')
+    }).catch(function (error) {
       $('.dimmer').removeClass('active')
     })
-  })
+  }
 
   function render (index, item) {
     var title = item['title'] || item['프로젝트 명']
