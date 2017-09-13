@@ -17,6 +17,8 @@
   })
 
   function render (index, item) {
+    if (item._taken) return
+
     var title = item['title'] || item['프로젝트 명']
     var $list = $('#list')
     var itemCount = $list.find('table').length
@@ -27,7 +29,7 @@
       var link = '<a class="disabled" href="">파일 보기</a>'
       var table = '<table class="ui definition table"></table>'
       var $div = $('<div id="' + index + '" class="eight wide column item">' + header + link + table + '</div>')
-      $list.append($div)
+      $list.prepend($div)
       $table = $div.find('table')
     }
 
@@ -35,6 +37,7 @@
     var i = 0
     for (var key in item) {
       if (key[0] === '_') continue
+      if (key === '연락처') continue
       var $row = $('row#' + i++)
       if (i >= rowCount) {
         $row = $('<tr><td class="key"></td><td class="val"></td></tr>')

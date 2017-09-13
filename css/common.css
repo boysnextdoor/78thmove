@@ -123,3 +123,7 @@ input.etc[type=text] {
 td.key {
   min-width: 10rem;
 }
+
+a[href=""] {
+  visibility: hidden;
+}
